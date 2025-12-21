@@ -17,7 +17,6 @@ bool BacktrackingSolver::isSafe(const Board& board, int row, int col) {
     return true;
 }
 
-// Định nghĩa hàm đệ quy
 void BacktrackingSolver::solveRecursive(Board& board, int row) {
     if (row == N) {
         solutions.push_back(board);
@@ -32,7 +31,6 @@ void BacktrackingSolver::solveRecursive(Board& board, int row) {
     }
 }
 
-// Định nghĩa hàm solve (public)
 vector<Board> BacktrackingSolver::solve(int n) {
     this->N = n;
     this->solutions.clear();

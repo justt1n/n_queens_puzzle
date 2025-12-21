@@ -1,3 +1,4 @@
+#pragma once
 #include <vector>
 
 // Định nghĩa Board dùng chung
