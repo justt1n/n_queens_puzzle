@@ -5,9 +5,4 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(n_queens_puzzle
         main.cpp
-        BacktrackingSolver.cpp
-        BacktrackingSolver.h
-        SimpleSolver.cpp
-        SimpleSolver.h
-        NQueensSolver.h
 )
