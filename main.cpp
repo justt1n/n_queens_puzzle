@@ -19,7 +19,7 @@ const long long MAX_STEPS_MULTIPLIER = 10;
 const int SAMPLE_SIZE = 20;
 
 // Các trường hợp test cho Benchmark
-const vector<int> TEST_CASES = {8, 12, 15, 20, 29, 30, 50, 100, 1000, 1000000};
+const vector<int> TEST_CASES = {8, 12, 15, 20, 29, 30, 50, 100, 1000, 1100, 1200, 1000000};
 
 // Exception cho Timeout
 class SolverTimeout : public exception {
@@ -356,7 +356,7 @@ void run_benchmark() {
          << " | " << setw(15) << "Basic BT"
          << " | " << setw(15) << "Optimized BT"
          << " | " << setw(15) << "Min-Conflicts"
-         << " | " << setw(15) << "Optimize Min-Conflicts" << endl;
+         << " | " << setw(15) << "Permutation Swaps" << endl;
     cout << string(80, '-') << endl;
 
     for (int n : TEST_CASES) {
@@ -383,7 +383,7 @@ void run_benchmark() {
         } else t2 = "Skip (>35)";
 
         // 3. Min-Conflicts (Standard)
-        if (n <= 1000) { // O(N^2) init nên chậm nếu N quá lớn
+        if (n <= 1500) { // O(N^2) init nên chậm nếu N quá lớn
             try {
                 auto start = chrono::high_resolution_clock::now();
                 if (solver.solve_min_conflicts(n, board)) {
@@ -391,7 +391,7 @@ void run_benchmark() {
                     t3 = format_time(chrono::duration<double>(end - start).count());
                 } else t3 = "Not Found";
             } catch (SolverTimeout&) { t3 = "Timeout"; }
-        } else t3 = "Skip (>1000)";
+        } else t3 = "Skip (>1500)";
 
         // 4. Permutation Swap (Mode 4 - Optimized for N=1,000,000)
         try {
